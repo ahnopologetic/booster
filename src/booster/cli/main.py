@@ -7,6 +7,9 @@ from pathlib import Path
 
 import click
 
+from booster.adapters.manager.base import BaseManager
+from booster.adapters.manager.utils import get_manager
+
 TEMPLATES_DIR = Path("templates")
 RESERVED_NAMES = ["booster", "template", "config"]
 
@@ -123,6 +126,8 @@ def create(template_name, project_name, force, variable):
 
     # Check if template exists
     template_dir = TEMPLATES_DIR / template_name
+    template_source_dir = template_dir / "project"
+
     if not template_dir.exists():
         raise click.BadParameter(f"Template not found: {template_name}")
 
@@ -152,14 +157,14 @@ def create(template_name, project_name, force, variable):
     project_dir.mkdir(parents=True)
 
     # Copy template files
-    for item in template_dir.glob("*"):
-        if item.name == "booster.json":
-            continue
+    project_manager = config["project_manager"]
 
-        if item.is_dir():
-            shutil.copytree(item, project_dir / item.name)
-        else:
-            shutil.copy2(item, project_dir / item.name)
+    # TODO: Add support for other project managers
+    manager: BaseManager = get_manager(project_manager)(
+        project_dir, template_source_dir
+    )
+    manager.validate_project()
+    manager.copy_files()
 
     # Process template_paths from config
     for path_key, path_template in config.get("template_paths", {}).items():

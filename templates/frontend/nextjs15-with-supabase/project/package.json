@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate-types": "npx supabase gen types typescript --schema public > lib/supabase/database.types.ts"
+    "generate-types": "npx supabase gen types typescript --schema public > utils/supabase/database.types.ts"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.1.1",

@@ -14,6 +14,8 @@ A template-based project generator that helps you quickly scaffold new projects 
 
 ```bash
 pip install booster
+-- for uvx user
+uvx apg-booster 
 ```
 
 For development:

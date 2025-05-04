@@ -27,12 +27,12 @@ jobs:
 
     - name: Run MyPy
       run: |
-        uvx mypy .
+        uv run mypy src/booster
 
     - name: Run Bandit
       run: |
-        uvx bandit .
+        uvx bandit src/booster
 
     - name: Run Tests
       run: |
-        uvx pytest .
+        uv run pytest .

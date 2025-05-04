@@ -3,9 +3,23 @@ name = "booster"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 dependencies = [
     "click>=8.1.8",
+]
+license = {text = "MIT"}
+authors = [
+    {name = "ahnopologetic", email = "stahn1995@gmail.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
 ]
 
 [dependency-groups]
@@ -13,7 +27,12 @@ dev = [
     "mypy>=1.15.0",
     "pytest>=8.3.5",
     "ruff>=0.11.8",
+    "types-click>=7.1.8",
 ]
+[project.urls]
+Documentation = "https://github.com/ahnopologetic/booster"
+Source = "https://github.com/ahnopologetic/booster"
+Tracker = "https://github.com/ahnopologetic/booster/issues"
 
 [project.scripts]
 booster = "booster.cli.main:main"
@@ -24,4 +43,3 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/booster"]
-

@@ -1,0 +1,56 @@
+{
+  "name": "sample-template",
+  "description": "A sample template for testing Booster CLI",
+  "version": "1.0.0",
+  "author": "Test Author",
+  "tags": ["sample", "test", "booster"],
+  "variables": {
+    "name": {
+      "type": "string",
+      "description": "Project name",
+      "default": "my-project"
+    },
+    "version": {
+      "type": "string",
+      "description": "Project version",
+      "default": "0.1.0"
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description",
+      "default": "A project created with Booster"
+    },
+    "author": {
+      "type": "string",
+      "description": "Project author",
+      "default": "Your Name"
+    },
+    "license": {
+      "type": "string",
+      "description": "Project license",
+      "default": "MIT",
+      "enum": ["MIT", "Apache-2.0", "GPL-3.0", "BSD-3-Clause", "Unlicense"]
+    },
+    "python_version": {
+      "type": "string",
+      "description": "Python version",
+      "default": "3.11",
+      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
+    }
+  },
+  "ignore": [
+    "*.pyc",
+    "__pycache__",
+    ".git",
+    ".vscode",
+    ".idea"
+  ],
+  "hooks": {
+    "post_create": "echo 'Project created successfully!'"
+  },
+  "template_paths": {
+    "src": "{{ name }}/src",
+    "tests": "{{ name }}/tests",
+    "docs": "{{ name }}/docs"
+  }
+} 

@@ -1,0 +1,28 @@
+name: uv-fastapi-with-supabase
+tags:
+  - fastapi
+  - supabase
+  - uv
+  - python
+  - docker
+
+project_manager: uv
+vars:
+  project_name: 
+    type: str
+    default: uv-fastapi-with-supabase
+  project_slug: 
+    type: str
+    default: uv-fastapi-with-supabase
+  project_description: 
+    type: str
+    default: A fastapi project with supabase
+  project_author: 
+    type: str
+    default: Your Name
+  project_email: 
+    type: str
+    default: your.email@example.com
+
+
+

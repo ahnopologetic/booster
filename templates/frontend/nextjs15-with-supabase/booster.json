@@ -1,0 +1,30 @@
+{
+    "name": "nextjs15-with-supabase",
+    "description": "A template for Next.js 15 with Supabase",
+    "version": "1.0.0",
+    "tags": [
+        "nextjs",
+        "supabase",
+        "shadcn",
+        "typescript",
+        "tailwind",
+        "react",
+        "nodejs"
+    ],
+    "project_manager": "npm",
+    "variables": {
+        "name": {
+            "type": "string",
+            "description": "Project name",
+            "default": "nextjs15-with-supabase"
+        },
+        "version": {
+            "type": "string",
+            "description": "Project version",
+            "default": "0.1.0"
+        }
+    },
+    "hooks": {
+        "post_create": "echo 'Project created successfully!'"
+    }
+}

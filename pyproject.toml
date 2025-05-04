@@ -1,7 +1,7 @@
 [project]
-name = "booster"
+name = "apg-booster"
 version = "0.1.0"
-description = "Add your description here"
+description = "A CLI tool to create and manage projects with a template"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [

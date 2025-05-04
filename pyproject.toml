@@ -35,7 +35,7 @@ Source = "https://github.com/ahnopologetic/booster"
 Tracker = "https://github.com/ahnopologetic/booster/issues"
 
 [project.scripts]
-booster = "booster.cli.main:main"
+apg-booster = "booster.cli.main:main"
 
 [build-system]
 requires = ["hatchling"]

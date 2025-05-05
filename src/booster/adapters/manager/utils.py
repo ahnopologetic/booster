@@ -1,8 +1,8 @@
-from booster.adapters.manager.base import BaseManager
-from booster.adapters.manager.npm import NpmManager
+from adapters.manager.base import BaseManager
+from adapters.manager.npm import NpmManager
 
 
-def get_manager(project_manager: str) -> BaseManager:
+def get_manager(project_manager: str) -> type[BaseManager]:
     if project_manager == "npm":
         return NpmManager
     else:

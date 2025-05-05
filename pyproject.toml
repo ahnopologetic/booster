@@ -1,6 +1,6 @@
 [project]
 name = "apg-booster"
-version = "0.1.0"
+version = "0.1.1"
 description = "A CLI tool to create and manage projects with a template"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -43,3 +43,6 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/booster"]
+
+[tool.mypy]
+explicit_package_bases = false

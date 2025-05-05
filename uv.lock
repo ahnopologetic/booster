@@ -3,8 +3,8 @@ revision = 1
 requires-python = ">=3.9"
 
 [[package]]
-name = "booster"
-version = "0.1.0"
+name = "apg-booster"
+version = "0.1.1"
 source = { editable = "." }
 dependencies = [
     { name = "click" },

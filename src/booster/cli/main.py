@@ -1,14 +1,12 @@
 import json
 import os
-import re
 import shutil
 import sys
 from pathlib import Path
 
 import click
-
-from booster.adapters.manager.base import BaseManager
-from booster.adapters.manager.utils import get_manager
+from adapters.manager.base import BaseManager
+from adapters.manager.utils import get_manager
 
 TEMPLATES_DIR = Path("templates")
 RESERVED_NAMES = ["booster", "template", "config"]

@@ -3,6 +3,7 @@ import os
 import shutil
 import sys
 from pathlib import Path
+from typing import Any
 
 import click
 from adapters.manager.base import BaseManager
@@ -77,7 +78,7 @@ def main():
     multiple=True,
     help="Define a variable for the template (format: name=type)",
 )
-def new(template_name, variable, project_manager: str = None):
+def new(template_name: str, variable: list[str], project_manager: str | None = None):
     """Create a new template."""
     ensure_template_dir_exists()
     template_dir = TEMPLATES_DIR / template_name
@@ -97,7 +98,7 @@ def new(template_name, variable, project_manager: str = None):
             "default": "",
         }
 
-    config = {
+    config: dict[str, Any] = {
         "name": template_name,
         "description": f"A {template_name} template",
         "version": "1.0.0",
@@ -125,7 +126,12 @@ def new(template_name, variable, project_manager: str = None):
     multiple=True,
     help="Override variables for the template (format: name=value)",
 )
-def create(template_name, project_name, force, variable):
+def create(
+    template_name: str,
+    project_name: str,
+    force: bool,
+    variable: list[str],
+):
     """Create a project from a template."""
     ensure_template_dir_exists()
     project_dir = Path(project_name)
@@ -162,7 +168,6 @@ def create(template_name, project_name, force, variable):
     # Create project directory
     project_dir.mkdir(parents=True)
 
-    # Copy template files
     project_manager = config["project_manager"]
 
     # TODO: Add support for other project managers

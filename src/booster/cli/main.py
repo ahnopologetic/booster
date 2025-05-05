@@ -65,12 +65,19 @@ def main():
 @main.command()
 @click.argument("template_name", callback=validate_template_name)
 @click.option(
+    "--project-manager",
+    "-p",
+    type=click.Choice(["npm", "uv", "bun"]),
+    help="Project manager to use",
+    default="npm",
+)
+@click.option(
     "--variable",
     "-v",
     multiple=True,
     help="Define a variable for the template (format: name=type)",
 )
-def new(template_name, variable):
+def new(template_name, variable, project_manager: str = None):
     """Create a new template."""
     ensure_template_dir_exists()
     template_dir = TEMPLATES_DIR / template_name
@@ -95,6 +102,7 @@ def new(template_name, variable):
         "description": f"A {template_name} template",
         "version": "1.0.0",
         "variables": variables,
+        "project_manager": project_manager,
     }
 
     with open(template_dir / "booster.json", "w") as f:

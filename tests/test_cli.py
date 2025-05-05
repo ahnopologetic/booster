@@ -1,3 +1,4 @@
+import json
 import os
 
 import pytest
@@ -12,7 +13,41 @@ def cli():
 
 
 @pytest.fixture
-def tempdir(tmp_path, monkeypatch):
+def valid_booster_json():
+    return {
+        "name": "my-template",
+        "description": "My template",
+        "version": "0.1.0",
+        "variables": {
+            "name": {
+                "type": "string",
+                "description": "Project name",
+                "default": "my-project",
+            },
+        },
+        "project_manager": "npm",
+    }
+
+
+@pytest.fixture
+def invalid_booster_json():
+    return {
+        "name": "my-template",
+        "description": "My template",
+        "version": "0.1.0",
+        "variables": {
+            "name": {
+                "type": "string",
+                "description": "Project name",
+                "default": "my-project",
+            },
+        },
+        "project_manager": "unknown",
+    }
+
+
+@pytest.fixture
+def tempdir(tmp_path, monkeypatch, valid_booster_json):
     """Create a temporary directory for tests and patch templates directory path."""
     templates_dir = tmp_path / "templates"
     templates_dir.mkdir()

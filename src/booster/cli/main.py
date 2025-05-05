@@ -1,3 +1,4 @@
+from __future__ import annotations
 import json
 import os
 import shutil
@@ -13,7 +14,9 @@ TEMPLATES_DIR = Path("templates")
 RESERVED_NAMES = ["booster", "template", "config"]
 
 
-def validate_template_name(ctx, param, value):
+def validate_template_name(
+    ctx: click.Context, param: click.Parameter, value: str
+) -> str:
     if not value:
         raise click.BadParameter("Template name is required")
 
@@ -28,9 +31,9 @@ def validate_template_name(ctx, param, value):
     return value
 
 
-def load_booster_config(template_name):
-    template_dir = TEMPLATES_DIR / template_name
-    config_path = template_dir / "booster.json"
+def load_booster_config(template_name: str) -> dict[str, Any]:
+    template_dir: Path = TEMPLATES_DIR / template_name
+    config_path: Path = template_dir / "booster.json"
 
     if not template_dir.exists():
         raise click.BadParameter(f"Template not found: {template_name}")
@@ -42,7 +45,7 @@ def load_booster_config(template_name):
         return json.load(f)
 
 
-def parse_variable(variable_str):
+def parse_variable(variable_str: str) -> tuple[str, str]:
     if "=" not in variable_str:
         raise click.BadParameter(
             f"Invalid variable format: {variable_str}. Expected format: name=value"
@@ -178,7 +181,7 @@ def create(
     manager.copy_files()
 
     # Process template_paths from config
-    for path_key, path_template in config.get("template_paths", {}).items():
+    for _, path_template in config.get("template_paths", {}).items():
         # Replace variables in path
         for var_name, var_value in var_values.items():
             path_template = path_template.replace(f"{{{{ {var_name} }}}}", var_value)
@@ -197,7 +200,7 @@ def create(
 
 @main.command()
 @click.argument("template_name")
-def show(template_name):
+def show(template_name: str):
     """Show template details."""
     try:
         config = load_booster_config(template_name)

@@ -1,7 +1,7 @@
 from __future__ import annotations
 from pathlib import Path
 
-from adapters.manager.base import BaseManager
+from booster.adapters.manager.base import BaseManager
 
 FILES_TO_IGNORE = [
     "package-lock.json",

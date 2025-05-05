@@ -7,8 +7,8 @@ from pathlib import Path
 from typing import Any
 
 import click
-from adapters.manager.base import BaseManager
-from adapters.manager.utils import get_manager
+from booster.adapters.manager.base import BaseManager
+from booster.adapters.manager.utils import get_manager
 
 TEMPLATES_DIR = Path("templates")
 RESERVED_NAMES = ["booster", "template", "config"]

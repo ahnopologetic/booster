@@ -36,3 +36,5 @@ jobs:
     - name: Run Tests
       run: |
         uv run pytest .
+      env:
+        PYTHONPATH: src/booster
